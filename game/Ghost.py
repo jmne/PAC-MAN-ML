@@ -14,4 +14,5 @@ class Ghost(pygame.sprite.Sprite):
         self.rect = newpos
 
     def calcnewpos(self,rect,vector):
+        # asf
         return rect.move(0)

@@ -59,6 +59,11 @@ font_name = pygame.font.match_font('arial')
 
 
 def main_menu():
+    """
+    Main menu function.
+
+    Args:
+    """
     global screen
 
     pygame.mixer.music.load(path.join(sound_folder, "menu.ogg"))
@@ -95,6 +100,16 @@ def main_menu():
 
 
 def draw_text(surf, text, size, x, y):
+    """
+    Draws a text on the surface.
+
+    Args:
+        surf: write your description
+        text: write your description
+        size: write your description
+        x: write your description
+        y: write your description
+    """
     ## selecting a cross platform font to display the score
     font = pygame.font.Font(font_name, size)
     text_surface = font.render(text, True, WHITE)  ## True denotes the font to be anti-aliased
@@ -104,6 +119,15 @@ def draw_text(surf, text, size, x, y):
 
 
 def draw_shield_bar(surf, x, y, pct):
+    """
+    Draw a shield bar.
+
+    Args:
+        surf: write your description
+        x: write your description
+        y: write your description
+        pct: write your description
+    """
     # if pct < 0:
     #     pct = 0
     pct = max(pct, 0)
@@ -118,6 +142,16 @@ def draw_shield_bar(surf, x, y, pct):
 
 
 def draw_lives(surf, x, y, lives, img):
+    """
+    Draw the given number of lives on the given image.
+
+    Args:
+        surf: write your description
+        x: write your description
+        y: write your description
+        lives: write your description
+        img: write your description
+    """
     for i in range(lives):
         img_rect = img.get_rect()
         img_rect.x = x + 30 * i
@@ -126,6 +160,11 @@ def draw_lives(surf, x, y, lives, img):
 
 
 def newmob():
+    """
+    Create a new mob and add it to all_sprites and mobs
+
+    Args:
+    """
     mob_element = Mob()
     all_sprites.add(mob_element)
     mobs.add(mob_element)
@@ -133,6 +172,14 @@ def newmob():
 
 class Explosion(pygame.sprite.Sprite):
     def __init__(self, center, size):
+        """
+        Initializes the explosion animation.
+
+        Args:
+            self: write your description
+            center: write your description
+            size: write your description
+        """
         pygame.sprite.Sprite.__init__(self)
         self.size = size
         self.image = explosion_anim[self.size][0]
@@ -143,6 +190,12 @@ class Explosion(pygame.sprite.Sprite):
         self.frame_rate = 75
 
     def update(self):
+        """
+        Update the animation.
+
+        Args:
+            self: write your description
+        """
         now = pygame.time.get_ticks()
         if now - self.last_update > self.frame_rate:
             self.last_update = now
@@ -158,6 +211,12 @@ class Explosion(pygame.sprite.Sprite):
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
+        """
+        Initializes the game.
+
+        Args:
+            self: write your description
+        """
         pygame.sprite.Sprite.__init__(self)
         ## scale the player img down
         self.image = pygame.transform.scale(player_img, (50, 38))
@@ -177,6 +236,12 @@ class Player(pygame.sprite.Sprite):
         self.power_timer = pygame.time.get_ticks()
 
     def update(self):
+        """
+        Updates the screen with the current state of the player.
+
+        Args:
+            self: write your description
+        """
         ## time out for powerups
         if self.power >= 2 and pygame.time.get_ticks() - self.power_time > POWERUP_TIME:
             self.power -= 1
@@ -212,6 +277,12 @@ class Player(pygame.sprite.Sprite):
         self.rect.x += self.speedx
 
     def shoot(self):
+        """
+        Shoots the bullet if it s time to shoot it.
+
+        Args:
+            self: write your description
+        """
         ## to tell the bullet where to spawn
         now = pygame.time.get_ticks()
         if now - self.last_shot > self.shoot_delay:
@@ -245,10 +316,22 @@ class Player(pygame.sprite.Sprite):
                 missile_sound.play()
 
     def powerup(self):
+        """
+        Power up one game.
+
+        Args:
+            self: write your description
+        """
         self.power += 1
         self.power_time = pygame.time.get_ticks()
 
     def hide(self):
+        """
+        Hides the game.
+
+        Args:
+            self: write your description
+        """
         self.hidden = True
         self.hide_timer = pygame.time.get_ticks()
         self.rect.center = (WIDTH / 2, HEIGHT + 200)
@@ -257,6 +340,12 @@ class Player(pygame.sprite.Sprite):
 # defines the enemies
 class Mob(pygame.sprite.Sprite):
     def __init__(self):
+        """
+        Initializes the meteor element
+
+        Args:
+            self: write your description
+        """
         pygame.sprite.Sprite.__init__(self)
         self.image_orig = random.choice(meteor_images)
         self.image_orig.set_colorkey(BLACK)
@@ -276,6 +365,12 @@ class Mob(pygame.sprite.Sprite):
         self.last_update = pygame.time.get_ticks()  ## time when the rotation has to happen
 
     def rotate(self):
+        """
+        Rotates the image if necessary.
+
+        Args:
+            self: write your description
+        """
         time_now = pygame.time.get_ticks()
         if time_now - self.last_update > 50:  # in milliseconds
             self.last_update = time_now
@@ -287,6 +382,12 @@ class Mob(pygame.sprite.Sprite):
             self.rect.center = old_center
 
     def update(self):
+        """
+        Update the screen.
+
+        Args:
+            self: write your description
+        """
         self.rotate()
         self.rect.x += self.speedx
         self.rect.y += self.speedy
@@ -301,6 +402,13 @@ class Mob(pygame.sprite.Sprite):
 ## defines the sprite for Powerups
 class Pow(pygame.sprite.Sprite):
     def __init__(self, center):
+        """
+        Create a powerup bullet.
+
+        Args:
+            self: write your description
+            center: write your description
+        """
         pygame.sprite.Sprite.__init__(self)
         self.type = random.choice(['shield', 'gun'])
         self.image = powerup_images[self.type]
@@ -321,6 +429,14 @@ class Pow(pygame.sprite.Sprite):
 ## defines the sprite for bullets
 class Bullet(pygame.sprite.Sprite):
     def __init__(self, x, y):
+        """
+        Create a bullet image
+
+        Args:
+            self: write your description
+            x: write your description
+            y: write your description
+        """
         pygame.sprite.Sprite.__init__(self)
         self.image = bullet_img
         self.image.set_colorkey(BLACK)
@@ -345,6 +461,14 @@ class Bullet(pygame.sprite.Sprite):
 ## FIRE ZE MISSILES
 class Missile(pygame.sprite.Sprite):
     def __init__(self, x, y):
+        """
+        Initializes the missile.
+
+        Args:
+            self: write your description
+            x: write your description
+            y: write your description
+        """
         pygame.sprite.Sprite.__init__(self)
         self.image = missile_img
         self.image.set_colorkey(BLACK)

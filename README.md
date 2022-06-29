@@ -1,2 +1,2 @@
-# PAC-MAN-ML
-PAC-MAN with Machine Learning and reinforcement learning
+# Space Shooters with Machine Learning
+Space Shooters with Machine Learning using Reinforcement Learning

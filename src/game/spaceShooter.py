@@ -21,8 +21,8 @@ import random
 from os import path
 
 ## assets folder
-img_dir = path.join(path.dirname(__file__), 'assets')
-sound_folder = path.join(path.dirname(__file__), 'sounds')
+img_dir = path.join(path.dirname(__file__), 'game/assets')
+sound_folder = path.join(path.dirname(__file__), 'game/sounds')
 
 ###############################
 ## to be placed in "constant.py" later
@@ -82,9 +82,11 @@ def main_menu():
                 break
             elif ev.key == pygame.K_q:
                 pygame.quit()
+                print("Quitting the game.")
                 quit()
         elif ev.type == pygame.QUIT:
             pygame.quit()
+            print("Quitting the game.")
             quit()
         else:
             draw_text(screen, "Press [ENTER] To Begin", 30, WIDTH / 2, HEIGHT / 2)
@@ -93,6 +95,7 @@ def main_menu():
 
     # pygame.mixer.music.stop()
     ready = pygame.mixer.Sound(path.join(sound_folder, 'getready.ogg'))
+    ready.set_volume(0.3)
     ready.play()
     screen.fill(BLACK)
     draw_text(screen, "GET READY!", 40, WIDTH / 2, HEIGHT / 2)
@@ -686,3 +689,4 @@ while running:
     pygame.display.flip()
 
 pygame.quit()
+print("Thanks for playing")

@@ -8,6 +8,7 @@
 [![Generate Documentation](https://github.com/jmne/SpaceShooter-ML/actions/workflows/generate-docs.yml/badge.svg)](https://github.com/jmne/SpaceShooter-ML/actions/workflows/generate-docs.yml)
 [![Check Misspells](https://github.com/jmne/SpaceShooter-ML/actions/workflows/misspell.yml/badge.svg)](https://github.com/jmne/SpaceShooter-ML/actions/workflows/misspell.yml)
 [![CodeQL](https://github.com/jmne/SpaceShooter-ML/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/jmne/SpaceShooter-ML/actions/workflows/codeql-analysis.yml)
+[![Python application](https://github.com/jmne/SpaceShooter-ML/actions/workflows/python-app.yml/badge.svg)](https://github.com/jmne/SpaceShooter-ML/actions/workflows/python-app.yml)
 
 ```
 Just run the .py

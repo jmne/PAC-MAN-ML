@@ -27,7 +27,7 @@ SpaceShooters-ML.exe
 ## Usage
 
 ```
-After installing and running the program.
+After installing run the program.
 ```
 
 ## License

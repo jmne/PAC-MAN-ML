@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Author: tasdik
-# @Contributers : Branden (Github: @bardlean86)
-# @Date:   2016-01-17
-# @Email:  prodicus@outlook.com  Github: @tasdikrahman
 # @Last Modified by:   tasdik
 # @Last Modified by:   Branden
 # @Last Modified by:   Dic3

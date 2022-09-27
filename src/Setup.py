@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='SpaceShooter-ML',
-    version='1.0.1',
+    version='1.0.2',
     packages=[''],
     url='https://github.com/jmne/PAC-MAN-ML',
     license='GPL-2.0 license',

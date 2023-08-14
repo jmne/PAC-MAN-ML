@@ -1,2 +1,2 @@
-pygame~=2.2.0
+pygame~=2.5.1
 setuptools~=67.8.0
